@@ -1,5 +1,7 @@
 package com.cg.bookStore.service;
 
+import java.util.Optional;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +22,13 @@ public class CategoryServiceImpl implements ICategoryService {
 	public String deleteCategory(BookCategory category) {
 		
 		try {
-		if(category.getBook()==null)
+			String categoryName=category.getCategoryName();
+			Optional<BookCategory> newCategory=categoryDao.findAll().stream().
+					filter(f->f.getCategoryName().equalsIgnoreCase(categoryName)).findFirst();
+			BookCategory bookCategory=newCategory.get();
+		if(bookCategory.getBook().isEmpty())
 		{
-			categoryDao.delete(category);
+			categoryDao.delete(bookCategory);
 			return "Category Deleted";
 		}
 		else 
@@ -46,5 +52,9 @@ public class CategoryServiceImpl implements ICategoryService {
 	public String deleteBook(BookInformation book) {
 		bookDao.delete(book);
 		return "deleted";
+	}
+	public BookCategory getCategory(int id) {
+		
+		return categoryDao.getOne(id);
 	}
 }
