@@ -6,7 +6,7 @@ import com.cg.bookStore.entities.BookInformation;
 public interface ICategoryService {
 
 	public String deleteCategory(BookCategory category);
-	public String createCategory(BookCategory category);
-	public String addBook(BookInformation book);
-	public String deleteBook(BookInformation book);
+//	public String createCategory(BookCategory category);
+//	public String addBook(BookInformation book);
+//	public String deleteBook(BookInformation book);
 }

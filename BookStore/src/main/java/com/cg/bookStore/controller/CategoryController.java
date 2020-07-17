@@ -23,23 +23,23 @@ public class CategoryController {
 		return categoryService.deleteCategory(category);
 	}
 	
-	@PostMapping(value = "/createCategory",consumes = {"application/json"})
-	public String createCategory(@RequestBody BookCategory bookCategory) {
-		System.out.println(bookCategory);
-		return categoryService.createCategory(bookCategory);
-	}
-
-	@PostMapping(value = "/addBook",consumes = {"application/json"})
-	public String addBook(@RequestBody BookInformation book) {
-		return categoryService.addBook(book);
-	}
-	@DeleteMapping(value = "/deleteBook",consumes = {"application/json"})
-	public String deleteBook(@RequestBody BookInformation book) {
-		return categoryService.deleteBook(book);
-	}
-	
-	@GetMapping(value = "/getCategory/{id}",produces = {"application/json"})
-	public BookCategory getCategory(@PathVariable int id) {
-		return categoryService.getCategory(id);
-	}
+//	@PostMapping(value = "/createCategory",consumes = {"application/json"})
+//	public String createCategory(@RequestBody BookCategory bookCategory) {
+//		System.out.println(bookCategory);
+//		return categoryService.createCategory(bookCategory);
+//	}
+//
+//	@PostMapping(value = "/addBook",consumes = {"application/json"})
+//	public String addBook(@RequestBody BookInformation book) {
+//		return categoryService.addBook(book);
+//	}
+//	@DeleteMapping(value = "/deleteBook",consumes = {"application/json"})
+//	public String deleteBook(@RequestBody BookInformation book) {
+//		return categoryService.deleteBook(book);
+//	}
+//	
+//	@GetMapping(value = "/getCategory/{id}",produces = {"application/json"})
+//	public BookCategory getCategory(@PathVariable int id) {
+//		return categoryService.getCategory(id);
+//	}
 }
