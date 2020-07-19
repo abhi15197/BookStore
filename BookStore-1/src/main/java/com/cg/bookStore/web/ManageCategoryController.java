@@ -1,7 +1,10 @@
 package com.cg.bookStore.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -27,13 +30,20 @@ public class ManageCategoryController {
 		return bookStoreService.deleteCategory(categoryId);
 	}
 	
-//	@DeleteMapping("/manageCategory/delete/{categoryName}")
-//	public String deleteCategoryByName(@PathVariable(name="categoryName") String categoryName) throws CategoryException {
-//		return bookStoreService.deleteCategory(categoryName);
-//	}
+
 	
 	@PutMapping("/manageCategory/update")
 	public String updateCategory(@RequestBody BookCategory category) throws CategoryException {
 		return bookStoreService.updateCategory(category);
 	}
+	
+	@GetMapping("/manageCategory/listAllCategory")
+	public List<BookCategory> listAllCategory() throws CategoryException{
+		return bookStoreService.listAllCategory();
+	}
+	
+//	@DeleteMapping("/manageCategory/delete/{categoryName}")
+//	public String deleteCategoryByName(@PathVariable(name="categoryName") String categoryName) throws CategoryException {
+//		return bookStoreService.deleteCategory(categoryName);
+//	}
 }

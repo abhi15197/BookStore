@@ -123,9 +123,10 @@ public class BookStoreDaoImpl implements BookStoreDao {
 	@Override
 	public boolean categoryContainsBook(int categoryId) {
 		
-		String jpql = "from BookInformation b where b.category=:categoryId";
+		BookCategory category=entitiManager.find(BookCategory.class, categoryId);
+		String jpql = "from BookInformation b where b.category=:category";
 		TypedQuery<BookInformation> query = entitiManager.createQuery(jpql, BookInformation.class);
-		query.setParameter("categoryId",categoryId);
+		query.setParameter("category",category);
 	    List<BookInformation> existingCat = query.getResultList();
 	    return existingCat.isEmpty();
 	    	
@@ -134,8 +135,14 @@ public class BookStoreDaoImpl implements BookStoreDao {
 
 	@Override
 	public Integer getCategoryID(String categoryName) {
-		
 		return null;
 	}
 
+	@Override
+	public List<BookCategory> listAllCategory() {
+		
+		String qstr="Select b from BookCategory b";
+		TypedQuery<BookCategory> query=entitiManager.createQuery(qstr,BookCategory.class);
+		return query.getResultList();
+	}
 }

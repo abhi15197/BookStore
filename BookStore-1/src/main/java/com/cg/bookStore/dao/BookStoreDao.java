@@ -22,4 +22,10 @@ public interface BookStoreDao {
 	public boolean categoryExists(int categoryId);
 	public boolean bookExists(int bookId);
 	public boolean bookExists(String bookName);
+
+	boolean categoryContainsBook(int categoryId);
+
+	Integer getCategoryID(String categoryName);
+
+	public List<BookCategory> listAllCategory();
 }

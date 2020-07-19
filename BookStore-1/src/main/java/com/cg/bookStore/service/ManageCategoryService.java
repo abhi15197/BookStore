@@ -1,5 +1,7 @@
 package com.cg.bookStore.service;
 
+import java.util.List;
+
 import com.cg.bookStore.entities.BookCategory;
 import com.cg.bookStore.exceptions.CategoryException;
 
@@ -9,4 +11,6 @@ public interface ManageCategoryService {
 	public String deleteCategory(int categoryId) throws CategoryException;
 	public String updateCategory(BookCategory category) throws CategoryException;
 	//public String displayCategory(int categoryId) throws CategoryException;
+	String deleteCategory(String categoryName) throws CategoryException;
+	public List<BookCategory> listAllCategory();
 }

@@ -1,5 +1,7 @@
 package com.cg.bookStore.service;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,15 +37,13 @@ public class ManageCategoryServiceImpl implements ManageCategoryService{
 		
 		bookStoreDao.createCategory(category);
 		return BookStoreConstants.CATEGORY_ADDED;
-		
-		
 	}
 
 	@Override
 	public String deleteCategory(int categoryId) throws CategoryException {
 		if(bookStoreDao.categoryExists(categoryId)) {
 			
-			if(bookStoreDao.categoryContainsBook(categoryId))
+			if(!bookStoreDao.categoryContainsBook(categoryId))
 				return BookStoreConstants.CATEGORY_NOT_EMPTY;
 			else {
 			bookStoreDao.deleteCategory(categoryId);
@@ -69,8 +69,14 @@ public class ManageCategoryServiceImpl implements ManageCategoryService{
 	@Override
 	public String deleteCategory(String categoryName) throws CategoryException {
 		
-		deleteCategory(bookStoreDao.getCategoryID(categoryName));
-		return null;
+		return deleteCategory(bookStoreDao.getCategoryID(categoryName));
+	
+	}
+
+	@Override
+	public List<BookCategory> listAllCategory() {
+		return bookStoreDao.listAllCategory();
+		
 	}
 
 
