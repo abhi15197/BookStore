@@ -1,0 +1,18 @@
+main
+{
+    font-family: 'Lato',sans-serif;
+    padding: 50px;
+    height: 800px;  
+}
+.modal
+{
+    display: block;
+    
+
+}
+.modal-dialog
+{
+    position: relative;
+    top: 50%;
+    transform: translate(0%,-50%);
+}
